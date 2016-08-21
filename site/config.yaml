@@ -1,0 +1,37 @@
+baseurl: https://me.kalbas.it/
+canonifyurls: true
+googleAnalytics: UA-82839578-1
+languageCode: en-US
+params:
+  appletouchicon: apple-touch-icon-precomposed.png
+  avatar: kalbasit.jpg
+  background: bg3.jpg
+  contact:
+    buttonText: Send it
+    emailPlaceholder: Email
+    enable: true
+    formTitle: Contact Me!
+    messagePlaceholder: Message
+    namePlaceholder: Name
+  email: me@kalbas.it
+  favicon: favicon.ico
+  footer:
+    copyright: Wael Nasreddine
+  name: Wael Nasreddine
+  position: Senior Software Engineer
+  social:
+  - icon: fa-book
+    link: https://kalbas.it
+    title: Blog
+  - icon: fa-github
+    link: https://github.com/kalbasit
+    title: Github
+  - icon: fa-twitter
+    link: https://twitter.com/kalbasit
+    title: Twitter
+  - icon: fa-facebook
+    link: https://fb.com/kalbasit
+    title: Facebook
+theme: hugo-identity-theme
+title: Wael Nasreddine
+
