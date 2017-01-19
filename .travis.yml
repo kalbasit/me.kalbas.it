@@ -1,32 +1,27 @@
-sudo: required
-language: c
+language: go
+go:
+  - 1.7
 services:
   - docker
 env:
   global:
-    # DOCKER_USER
-    - secure: "gumnzSVwVAKufG3hklPRayyQ1Nxm833UO7Yu05w6YZxEaPm7+AVsAGQOxtR58zmzAcEtp83ye6u2jZcS9LXaI8yFZZx/sw0ydcZECUphnHnSeAkuLspLph2r+sgfjjDyrmf/x1olGdWqtezle5pW2PvAqvDLzexYUJTXdEimJTnRi+kxLLS7z87YBJwJ6ATOTYKky+o+xSFY8kX8+dbLRESoSudVwZUOC9Je7B56T2m36EBRILX9tk0AuBV9YwnY9qTrlp9Dlb3xI0HXAsNim5ziDY4z8nMhci/VyBjPQ+HCbaEU2iH/CVbOhbNh3Z/qFqKCIKt7AfmY5JpblVrt7UyfE8eG3q58FWcTKwwp7Ooi8QfI4hQJyKtzktH942cUipA8qjJkB5335z3s2bgl16QzKfLHr23+t9TwyzACsRS76P+b/E4pY130+NZEixN3vetuS93uRwZ10HRGyEJyAQ19sWRy5PUPzWaoEaXo6DPA/evAfs6c4uETQh4XrXhSYuCLmUa/pEa0nVUcZ5yr63zqqVxoxsjB62Usu0MOuzzfUaZCMsgSfwrqAWkOJlB3HO9UHDrLWCJHEkK1+KLkHyL8q1rmFL+kFtXYUgCLb3/y6wV3mNxI2tzxXiXndanwD0c2mKeSW4TwooG4Wj9MLeAD/OttXQXuGVAKs7Ix+Oc="
-    # DOCKER_PASS
-    - secure: "yAvMNI7PsJ/90gB3O8Qn52Ra/Ilx6zIx7cRTNoNpPnlBI28aDLgHycGH57ul8MZ4QLkMct3hSUdyv5Q3NGfd0cWixiilP2jbs+9mEIgl+8n9E7Gwsory/qOk7HFyd9ukD8GRotnlxvD9fyC1UgeYRno3zieN6IJsDMF/YRHwTFoQU7lRhujqrirD09BPneGMNum86x435VTfVwgmsVa+qMc26cBGtyE1oYK+KJqLsaa9pr3WLf2nOrof/TOzWZusODq1cU0B2w5Ws8kjb/h/o13PjqYdM7+pd2iD84qJqv0yt9xziHv7dJ5v6wk9SaO3+vrjCqrNNCgRFulddLmeaqBlJQ2V+D13/insREyppUEFlsF2phiDJeY2AO8725cX9KwsfogY/WeHvq7us/rOI209qOy7KRJWdR0qcvnYzbSRJhnSjOHtl7quqrDSiqdwr1/EE7+h6nFnPnr5UEpT7oSyfIxHvRVURTS9+SbeGIM2oMwULsl4cQEL4V0QZe/7SY3ujQqWbCQOIRreSOFN7ZIYHNKpvZ3pZUoyIIimEEvME2UKlxUYVACrrmwPsdeoAoCtRSg94ovWTz//gHx5Z8rofAb78PIfREn2x9FCdtigRL1klCL4mXbZjsLtSPToDHQfNRrLkzA1BGXK6s/JHE63SCkMOfG5Pt6SE+yl8Xg="
-
-    # deploy-tools settings
-    - BUILD_IMAGE_BRANCH=ALL
-    - DEPLOY_SYSTEMD_BRANCH=master
-    - SYSTEMD_SSH_HOST="webserver.kalbas.it"
-    - SYSTEMD_SSH_USER="core"
-    - SYSTEMD_SSH_IDENTITY_FILE="${HOME}/web_server_id_rsa"
-    - SYSTEMD_DOCKER_IMAGE="kalbasit/me-kalbas-it"
-    - SYSTEMD_USE_SUDO=yes
-    - SYSTEMD_UNIT=nginx-me-kalbas-it.service
-before_install:
-  - openssl aes-256-cbc -K $encrypted_a41f96adfbc4_key -iv $encrypted_a41f96adfbc4_iv -in .travis/web_server.enc -out $HOME/web_server_id_rsa -d
-script: true
-before_deploy:
-  - git clone https://github.com/kalbasit/deploy-tools.git $HOME/deploy-tools
+    # AWS_ACCESS_KEY_ID
+    - secure: "dj+0CL0YNxyI69VXOUXxPUgAq/UEWTw1P8pRl/YGA17Scsraj/r7sSQU/Mu7IfX1CQy3GkqRtTEc9MTlnbSb6aFlz7LZlXyXG6dtynUzh06OtjxK1seeFCnTLWn51IXWFm5YALTWULHNF22lL3gV5MfYwrdMXigfN1V05bEBX451IqGBXbLiuNE3iW28ztJTT4itrGmaFRWpSFlENkHODgeiUPJbk+8Un6eWbP8rIKwhDNtr6AXcfaryWmDsdf0pTAqR2+o8VBz6/vwLkiLFAgF9HwoSKvQX/B1RI819Z6LhyYHm2dFSO/kT44vs4298rjFuXQJzd3mNA5sQK04sonUd4moEKoLuxCC3+mrNhYq9jgOSOMC/ZATXoNZl5L81BV/caUOTKXu3SdZOTLD5frIV8qtY5m1Xeo6JsjDdf7fVAa7grP9e2+2OHe1G4S/WxrpwFvpA7XM/Bozo29LLqlI6pI3YuAv0XGFjw00p5NSA7+Qvjal7tvvB52n+TOZ+BumFR3E58djfV2DSi2ocvT1b95yXhF2incYOHZIVtmMsfE13UdkidRBcso316o/8cFVjVCPfzrQIbQZ8KTLUhXOoLyqJRBHJsby5gh6PXmUvzWCitV1W9SIsn9XoHgljlVOkxfD3AYDykSgEtAouncD1Xw1zRgNAJSFQ9ACB7SI="
+    # AWS_SECRET_ACCESS_KEY
+    - secure: "wLZwmcaQbtMX3CJuG2sgHp+VD8X/WCed8cASAGwL+Ao8Th0ExPGxKO2ypQq9cVpUvKFyTRV4PLM2G2vdoLssq2uPavaygH+5iAnsppl7FR3b4ykw3IczS8U6IJMFVbEeM1OpmIiGDgYbU9Oo6v0P5akIN93Pnthf1n9OHbMvPVs/tlGZPJw24YkG+y6t5hbL00rCpaA8vNxpH2QwhuG4ugUa0Dq5CAhyMnXqe5P9q3oBKBQ9oyaCwVwidvXgjyD5eJ89tQkVpjwqscP9M4dOGSlHbuF6E/QnmbHksiSKWjs779e80F4Wscf9fuX78XnlUpo8lrOf6NkRt05ER7JUq8NjvuEPe0kDCW9jGQTSrCcbf2dr/ycUt11COQpn4XEaPqLRYXHkLWIvKOnGJUiutkgcccKXozFVEhGwf9CtTVFQObdIsXNdbnZqLN/zCUm+JIrJYulAiRr/gl01GX6skHZl5pkpQuTsiBocHaGEm57DjAynnSZc9LeY2GhRVzIj6H6BvxfQmrshjhUvGBit+bGudoYCnIn91yr7TwoVjZXObcZOcfk1vHFP7R6JKeqjdtneY59AcF/2Pp+Q6L6uaZXasEYBPDPHHV3d4Pi4urfkahSVKu4Z7ezyYySTFKyK+HDIbpOZlB81OoIrmlNYA3aAYqW8v3JvoAImEVhdlrc="
+    - HUGO_VERSION=v0.18.1
+install:
+  - ./scripts/install_hugo.sh
+script:
+  - hugo
 deploy:
-  - provider: script
-    script: $HOME/deploy-tools/deploy.sh
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: me.kalbas.it
+    acl: private
+    local_dir: public
     skip_cleanup: true
     on:
-      all_branches: true
       repo: "kalbasit/me.kalbas.it"
+      branch: "master"
